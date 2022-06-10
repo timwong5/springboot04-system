@@ -3,12 +3,13 @@ package com.timwang5.dao;
 import com.timwang5.pojo.Department;
 import com.timwang5.pojo.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
+@Repository
 public class EmployeeDao {
 
     //模拟数据库中员工表的数据
