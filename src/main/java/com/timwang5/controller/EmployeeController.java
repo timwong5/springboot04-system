@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.Collection;
 
 @Controller
@@ -81,6 +82,16 @@ public class EmployeeController {
         employeeDao.deleteEmployeeByID(id);
         return "redirect:/emps";
     }
+
+
+
+    @RequestMapping("/user/signout")
+    public String logout(HttpSession session) {
+        //清除session，并重定向到首页
+        session.invalidate();
+        return "redirect:/index.html";
+    }
+
 
 
 
