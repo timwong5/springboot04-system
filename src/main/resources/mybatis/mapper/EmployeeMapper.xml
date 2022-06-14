@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.timwang5.mapper.EmployeeMapper">
+
+    <resultMap id="EmployeeMap" type="Employee">
+        <id property="id" column="id"/>
+        <result property="lastName" column="lastName"/>
+        <result property="email" column="email"/>
+        <result property="gender" column="gender"/>
+        <result property="date" column="date"/>
+        <association property="department" javaType="Department">
+            <id property="id" column="id"/>
+            <result property="departmentName" column="departmentName"/>
+        </association>
+
+    </resultMap>
+
+
+    <select id="getEmployees" resultMap="EmployeeMap">
+        SELECT e.id, e.lastName, e.email, e.gender, d.departmentName, e.date
+        FROM employee e,
+             department d
+        WHERE e.departmentId = d.id;
+    </select>
+
+
+    <select id="add" parameterType="Employee">
+        insert into employee(lastName, email, gender, departmentId, date)
+        values (#{lastName}, #{email}, #{gender}, #{department.id}, #{date});
+    </select>
+
+
+    <!--    查询一个员工-->
+    <select id="getEmployeeById" resultType="Employee" parameterType="Integer">
+        select *
+        from employee
+        where id = #{id}
+    </select>
+
+    <!--    删除-->
+    <select id="delete" parameterType="int">
+        delete
+        from employee
+        where id = #{id}
+    </select>
+
+
+    <!--    修改一个员工-->
+
+    <update id="edit" parameterType="Employee">
+        update employee
+        set lastName=#{lastName},
+            email=#{email},
+            gender=#{gender},
+            departmentId=#{department.id},
+            date=#{date}
+        where id = #{id}
+    </update>
+
+
+</mapper>

@@ -18,5 +18,8 @@ public class Employee {
     private Integer gender;//0:女 1:男
     private Department department;
     private Date date;
+
+
+
 }
 
