@@ -59,6 +59,9 @@ public class EmployeeController {
         Employee employeeByID = employeeDao.get(id);
         model.addAttribute("empByID", employeeByID);
 
+//        Department departmentByID = departmentDao.get(id);
+//        model.addAttribute("depByID",departmentByID);
+
 
         //查出所有的部门信息,添加到departments中,用于前端接收
         List<Department> departments = departmentDao.getAll();

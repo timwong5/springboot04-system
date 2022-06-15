@@ -88,8 +88,9 @@
                 <div class="form-group">
                     <label>department</label>
                     <!--注意这里的name是department.id，因为传入的参数为id-->
+                    <!--                    Bug need to fix-->
                     <select class="form-control" name="department.id">
-                        <option th:selected="${department.getId()==empByID.department.getId()}"
+                        <option th:selected="${department.getId() == empByID.department.getId()}"
                                 th:each="department:${departments}" th:text="${department.getDepartmentName()}"
                                 th:value="${department.getId()}">
                         </option>
@@ -98,14 +99,14 @@
                 <div class="form-group">
                     <label>Birth</label>
                     <!--springboot默认的日期格式为yy/MM/dd-->
-                    <input th:value="${#dates.format(empByID.getDate(),'yyyy/MM/dd')}" type="text" name="date" class="form-control"
+                    <input th:value="${#dates.format(empByID.getDate(),'yyyy/MM/dd')}" type="text" name="date"
+                           class="form-control"
                            placeholder="birth:yy/MM/dd">
 
                 </div>
                 <button type="submit" class="btn btn-primary">修改</button>
             </form>
         </main>
-
 
 
     </div>
